@@ -7,11 +7,13 @@ workflows:
       flutter: stable
 
     scripts:
-      - cd flutter_project
-      - flutter clean
-      - flutter pub get
-      - flutter build apk --release
-      - flutter build apk --release --split-per-abi
+      - name: Build optimized APKs
+        script: |
+          cd flutter_project
+          flutter clean
+          flutter pub get
+          flutter build apk --release
+          flutter build apk --release --split-per-abi
 
     artifacts:
       - flutter_project/build/app/outputs/flutter-apk/*.apk
